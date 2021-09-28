@@ -20,7 +20,7 @@ exports.getBrands = function(req, res) {
             return
         }
 
-        sql = "SELECT * FROM marca"
+        sql = "SELECT * FRoM marca"
 
         connection.query(sql, (err, results) => {
             connection.release()
