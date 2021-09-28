@@ -13,17 +13,14 @@ const indexRoutes = require('./routes/index')
 
 //Initialization
 const app = express()
-let pool = mysql.createPool({
-    connectionLimit : 1000,
-    connectTimeout  : 60 * 60 * 1000,
-    acquireTimeout  : 60 * 60 * 1000,
-    timeout         : 60 * 60 * 1000,
+let connection = mysql.createConnection({
     host:'uh1.hnc.cl',
     user:'mobalzen_keyzen',
     password:'keyzencl123',
     database:'mobalzen_autonueve',
     port:'3306',
 })
+
 
 
 //SETTINGS
@@ -60,11 +57,6 @@ app.use(cookieParser())
 
 
 app.get('/', (req, res) => {
-    pool.getConnection((err, connection) => {
-        if (err) {
-            console.error(err)
-            return
-        }
 
         sql = "SELECT * FRoM marca"
 
@@ -78,12 +70,11 @@ app.get('/', (req, res) => {
                 results
             })
             
-            connection.release()
 
         })
 
-        
-    })
+     
+    
 })
 
 
