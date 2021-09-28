@@ -1,7 +1,6 @@
 const express = require('express')
-const app = express()
 
-
+const mysql = require('mysql');
 const Handlebars = require('handlebars')
 const exphbs = require('express-handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access');
@@ -11,6 +10,21 @@ const cookieParser = require('cookie-parser')
 
 //Routes
 const indexRoutes = require('./routes/index')
+
+//Initialization
+const app = express()
+let pool = mysql.createPool({
+    connectionLimit : 1000,
+    connectTimeout  : 60 * 60 * 1000,
+    acquireTimeout  : 60 * 60 * 1000,
+    timeout         : 60 * 60 * 1000,
+    host:'uh1.hnc.cl',
+    user:'mobalzen_keyzen',
+    password:'keyzencl123',
+    database:'mobalzen_autonueve',
+    port:'3306',
+})
+
 
 //SETTINGS
 
@@ -42,13 +56,41 @@ app.use(cookieParser())
 
 //Routes
 
-app.use('/', indexRoutes)
 
 
 
 app.get('/', (req, res) => {
-    res.send("okidoki")
+    pool.getConnection((err, connection) => {
+        if (err) {
+            console.error(err)
+            return
+        }
+
+        sql = "SELECT * FRoM marca"
+
+        connection.query(sql, (err, results) => {
+            if (err) {
+                console.error(err)
+                return
+            }
+            
+            res.render("index", {
+                results
+            })
+            
+            connection.release()
+
+        })
+
+        
+    })
 })
+
+
+
+
+
+
 
 
 
