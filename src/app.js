@@ -21,6 +21,11 @@ let connection = mysql.createConnection({
     port:'3306',
 })
 
+connection.connect((err) => {
+    if (err) throw err;
+    console.log("conectados a la base de datos")
+})
+
 
 
 //SETTINGS
