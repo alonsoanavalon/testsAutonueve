@@ -33,12 +33,13 @@ exports.getBrands = function(req, res, next) {
             })
             
             connection.release()
+            next()
         })
 
         
     })
 
-    next()
+
 
 
 
