@@ -13,7 +13,7 @@ let pool = mysql.createPool({
     port:'3306',
 })
 
-exports.getBrands = function(req, res) {
+exports.getBrands = function(req, res, next) {
     pool.getConnection((err, connection) => {
         if (err) {
             console.error(err)
@@ -37,6 +37,8 @@ exports.getBrands = function(req, res) {
 
         
     })
+
+    next()
 
 
 
