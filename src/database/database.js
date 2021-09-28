@@ -6,10 +6,11 @@ let pool = mysql.createPool({
     connectTimeout  : 60 * 60 * 1000,
     acquireTimeout  : 60 * 60 * 1000,
     timeout         : 60 * 60 * 1000,
-    host:config.host,
-    user:config.user,
-    password:config.password,
-    database:config.database
+    host:'uh1.hnc.cl',
+    user:'mobalzen_keyzen',
+    password:'keyzencl123',
+    database:'mobalzen_autonueve',
+    port:'3306',
 })
 
 exports.getBrands = function(req, res) {
