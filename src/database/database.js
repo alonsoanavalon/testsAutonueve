@@ -23,17 +23,18 @@ exports.getBrands = function(req, res) {
         sql = "SELECT * FRoM marca"
 
         connection.query(sql, (err, results) => {
-            connection.release()
             if (err) {
                 console.error(err)
                 return
             }
-
+            
             res.render("index", {
                 results
             })
-
+            
+            connection.release()
         })
+
         
     })
 
