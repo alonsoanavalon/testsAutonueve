@@ -1,8 +1,8 @@
+const database = require('../database/database');
+
 const router = require('express').Router()
 
-router.get('/', (req, res) => {
-    res.render("index")
-})
+router.get('/', database.getBrands)
 
 
 module.exports = router;
