@@ -14,16 +14,16 @@ const indexRoutes = require('./routes/index')
 //Initialization
 const app = express()
 let connection = mysql.createConnection({
-    host:'uh1.hnc.cl',
-    user:'mobalzen_keyzen',
-    password:'keyzencl123',
-    database:'mobalzen_autonueve',
-    port:'3306',
+    host:"uh1.hnc.cl",
+    user:"mobalzen_keyzen",
+    password:"keyzencl123",
+    database:"mobalzen_autonueve",
+    port:"3306"
 })
 
 connection.connect((err) => {
     if (err) throw err;
-    console.log("conectados a la base de datoss")
+    console.log("conectados a la base de datos")
 })
 
 
