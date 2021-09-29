@@ -23,7 +23,7 @@ let connection = mysql.createConnection({
 
 connection.connect((err) => {
     if (err) throw err;
-    console.log("conectados a la base de datos")
+    console.log("conectados a la base de datoss")
 })
 
 
