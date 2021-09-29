@@ -17,14 +17,21 @@ let connection = mysql.createConnection({
     host:"uh1.hnc.cl",
     user:"mobalzen_keyzen",
     password:"keyzencl123",
-    database:"mobalzen_autonueve",
-    port:"3306"
+    database:"mobalzen_autonueve"
 })
 
 connection.connect((err) => {
     if (err) throw err;
     console.log("conectados a la base de datos")
 })
+
+connection.query("SELECT * FROM marca", (err, results, fields) => {
+    if(err) throw err;
+    console.log("Los resultados son")
+    console.log(results)
+})
+
+connection.end()
 
 
 
@@ -63,7 +70,9 @@ app.use(cookieParser())
 
 app.get('/', (req, res) => {
 
-        sql = "SELECT * FRoM marca"
+    res.send("Ok")
+
+/*         sql = "SELECT * FRoM marca"
 
         connection.query(sql, (err, results) => {
             if (err) {
@@ -76,7 +85,7 @@ app.get('/', (req, res) => {
             })
             
 
-        })
+        }) */
 
      
     
