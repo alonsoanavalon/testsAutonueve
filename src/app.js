@@ -1,6 +1,5 @@
 const express = require('express')
 
-const mysql = require('mysql');
 const Handlebars = require('handlebars')
 const exphbs = require('express-handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access');
@@ -13,25 +12,11 @@ const indexRoutes = require('./routes/index')
 
 //Initialization
 const app = express()
-let connection = mysql.createConnection({
-    host: 'localhost',
-    user:"keyzen",
-    password:"$Elmasmejor0910",
-    database:"autonueve"
-})
 
-connection.connect((err) => {
-    if (err) throw err;
-    console.log("conectados a la base de datos")
-})
 
-connection.query("SELECT * FROM marca", (err, results, fields) => {
-    if(err) throw err;
-    console.log("Los resultados son")
-    console.log(results)
-})
 
-connection.end()
+
+
 
 
 
@@ -68,28 +53,7 @@ app.use(cookieParser())
 
 
 
-app.get('/', (req, res) => {
-
-    res.send("Ok")
-
-/*         sql = "SELECT * FRoM marca"
-
-        connection.query(sql, (err, results) => {
-            if (err) {
-                console.error(err)
-                return
-            }
-            
-            res.render("index", {
-                results
-            })
-            
-
-        }) */
-
-     
-    
-})
+app.use('/', indexRoutes)
 
 
 
