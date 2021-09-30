@@ -100,5 +100,5 @@ app.get('/', (req, res) => {
 
 
 app.listen(app.get('port'), () => {
-    console.log(`Conectado al servidor en el PORT: ${app.get('port')}`)
+    console.log(`Conectado al servidor en el PORTT: ${app.get('port')}`)
 })
