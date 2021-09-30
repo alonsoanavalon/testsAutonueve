@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser')
 
 //Routes
 const indexRoutes = require('./routes/index')
+const testRoutes = require('./routes/test')
 
 //Initialization
 const app = express()
@@ -54,6 +55,7 @@ app.use(cookieParser())
 
 
 app.use('/', indexRoutes)
+app.use('/test', testRoutes)
 
 
 
