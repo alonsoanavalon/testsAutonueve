@@ -14,10 +14,10 @@ const indexRoutes = require('./routes/index')
 //Initialization
 const app = express()
 let connection = mysql.createConnection({
-    host:"us-cdbr-east-04.cleardb.com",
-    user:"b3df8acaa07ed3",
-    password:"2f67e0c4",
-    database:"heroku_8ced3ec1d677298"
+    host: 'localhost',
+    user:"keyzen",
+    password:"$Elmasmejor0910",
+    database:"autonueve"
 })
 
 connection.connect((err) => {
